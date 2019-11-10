@@ -6,7 +6,7 @@
 /*   By: bglover <bglover@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/25 20:17:43 by bglover           #+#    #+#             */
-/*   Updated: 2019/11/10 20:11:36 by bglover          ###   ########.fr       */
+/*   Updated: 2019/11/10 23:09:28 by bglover          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,7 @@ int		second_half(n_list **stack_a, n_list **stack_b, ps **new_ps,
 	i = 0;
 	flag = (*stack_a)->flag;
 	mid = ((*new_ps)->max - (*new_ps)->next) / 2 + (*new_ps)->next;
-	while ((*stack_a)->flag == flag /*&& (ft_lstlens(stack_b) <= ft_calc_max(stack_a) - mid)*/)
+	while ((*stack_a)->flag == flag)
 		if ((i == 0) && ((*stack_a)->order == (*new_ps)->next))
 		{
 			ft_lstcomadd(com_stack, ft_lstcomnew(ft_ra(stack_a)));
@@ -38,19 +38,9 @@ int		second_half(n_list **stack_a, n_list **stack_b, ps **new_ps,
 			(*stack_a)->sort = 1;
 			ft_lstcomadd(com_stack, ft_lstcomnew(ft_pb(stack_a, stack_b)));
 		}
-		else if ((*stack_a)->order > mid)
+		else if ((*stack_a)->order >= mid)
 		{
 			(*stack_a)->flag = (*new_ps)->flag;
-			while ((*stack_a)->order > mid && (*stack_a)->order != 1)
-			{
-				(*stack_a) = (*stack_a)->next;
-				if ((*stack_a)->order == 1)
-				{
-					(*stack_a) = (*stack_a)->previous;
-					break ;
-				}
-			}
-			if
 			ft_lstcomadd(com_stack, ft_lstcomnew(ft_ra(stack_a)));
 			i++;
 		}

@@ -6,7 +6,7 @@
 /*   By: bglover <bglover@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/27 19:09:02 by bglover           #+#    #+#             */
-/*   Updated: 2019/11/01 18:44:23 by bglover          ###   ########.fr       */
+/*   Updated: 2019/11/10 22:18:07 by bglover          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -72,6 +72,8 @@ int		main(int argc, char **argv)
 
 	stack_a = NULL;
 	stack_b = NULL;
+	if (argc == 1)
+		return (0);
 	if (!ft_parse(argv, argc, &stack_a))
 	{
 		ft_free_all(&stack_a, &stack_b, &new_ps, &com_stack);

@@ -6,11 +6,17 @@
 /*   By: bglover <bglover@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/25 22:51:36 by bglover           #+#    #+#             */
-/*   Updated: 2019/11/08 20:26:04 by bglover          ###   ########.fr       */
+/*   Updated: 2019/11/10 23:12:58 by bglover          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/push_swap.h"
+
+void	ft_if_one(n_list **stack_a, n_list **stack_b, c_list **com_stack)
+{
+	if (ft_lstlens(stack_b) == 1)
+			ft_lstcomadd(com_stack, ft_lstcomnew(ft_pa(stack_a, stack_b)));
+}
 
 /*
 ** Основная сортировка стка б!
@@ -22,6 +28,7 @@ void	ft_last_three(n_list **stack_a, n_list **stack_b, ps **new_ps,
 {
 	if (ft_lstlens(stack_b) <= 3)
 	{
+		ft_if_one(stack_a, stack_b, com_stack);
 		if (ft_lstlens(stack_b) == 2)
 		{
 			(*new_ps)->i = (*stack_b)->order;
@@ -80,8 +87,7 @@ void	ft_start_sort_b(n_list **stack_a, n_list **stack_b, ps **new_ps,
 	max = ft_calc_max(stack_b);
 	mid = (max - (*new_ps)->next) / 2 + (*new_ps)->next;
 	(*new_ps)->flag++;
-	while (*stack_b && (*stack_b)->sort == 0 && ft_lstlens(stack_b) > 3)
-	{
+	while (*stack_b && (*stack_b)->sort == 0 && ft_lstlens(stack_b) > 2)
 		if ((*stack_b)->order <= mid && ft_lstlens(stack_b) > 2)
 			ft_push_rotate(stack_a, stack_b, new_ps, com_stack);
 		else if ((*stack_b)->order >= mid && ft_lstlens(stack_b) > 2)
@@ -89,7 +95,6 @@ void	ft_start_sort_b(n_list **stack_a, n_list **stack_b, ps **new_ps,
 			(*stack_b)->flag = (*new_ps)->flag;
 			ft_lstcomadd(com_stack, ft_lstcomnew(ft_pa(stack_a, stack_b)));
 		}
-	}
 	ft_last_three(stack_a, stack_b, new_ps, com_stack);
 	return ;
 }

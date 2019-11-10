@@ -6,7 +6,7 @@
 /*   By: bglover <bglover@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/27 17:15:58 by bglover           #+#    #+#             */
-/*   Updated: 2019/11/08 22:28:24 by bglover          ###   ########.fr       */
+/*   Updated: 2019/11/10 23:10:47 by bglover          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -89,7 +89,7 @@ void	ft_part_2(n_list **stack_a, c_list **com_stack)
 ** Для двух чисел
 */
 
-void		ft_for_two(n_list **stack_a, c_list **com_stack)
+void	ft_for_two(n_list **stack_a, c_list **com_stack)
 {
 	n_list *t1;
 

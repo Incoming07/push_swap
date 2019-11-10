@@ -6,7 +6,7 @@
 /*   By: bglover <bglover@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/25 20:44:27 by bglover           #+#    #+#             */
-/*   Updated: 2019/11/09 21:09:46 by bglover          ###   ########.fr       */
+/*   Updated: 2019/11/10 23:12:24 by bglover          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,12 +31,6 @@ void	ft_print_com(c_list **com_stack)
 		{
 			com_stack_temp->com = NULL;
 			(*com_stack)->com = "rr\n";
-		}
-		if (com_stack_temp->com && (!ft_strcmp(com_stack_temp->com, "sa\n") &&
-		!ft_strcmp((*com_stack)->com, "sb\n")))
-		{
-			com_stack_temp->com = NULL;
-			(*com_stack)->com = "ss\n";
 		}
 	}
 	(*com_stack) = com_stack_first;

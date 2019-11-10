@@ -6,7 +6,7 @@
 /*   By: bglover <bglover@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/02 18:06:38 by bglover           #+#    #+#             */
-/*   Updated: 2019/11/08 22:00:01 by bglover          ###   ########.fr       */
+/*   Updated: 2019/11/10 23:11:25 by bglover          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@
 char	*ft_pa(n_list **stack_a, n_list **stack_b)
 {
 	n_list	*temp_1;
-	
+
 	if (!(*stack_b))
 		return (NULL);
 	if (!*stack_a)
@@ -80,7 +80,7 @@ char	*ft_ra(n_list **stack_a)
 {
 	n_list	*temp_1;
 	n_list	*temp_2;
-	
+
 	if (ft_lstlens(stack_a) < 2)
 		return (NULL);
 	temp_1 = *stack_a;
