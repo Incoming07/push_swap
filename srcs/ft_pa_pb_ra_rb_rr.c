@@ -6,7 +6,7 @@
 /*   By: bglover <bglover@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/02 18:06:38 by bglover           #+#    #+#             */
-/*   Updated: 2019/11/10 23:11:25 by bglover          ###   ########.fr       */
+/*   Updated: 2019/11/11 18:37:54 by bglover          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,9 +16,9 @@
 ** Переносит первый э-т stack_a в stack_b
 */
 
-char	*ft_pa(n_list **stack_a, n_list **stack_b)
+char	*ft_pa(t_n_list **stack_a, t_n_list **stack_b)
 {
-	n_list	*temp_1;
+	t_n_list	*temp_1;
 
 	if (!(*stack_b))
 		return (NULL);
@@ -46,9 +46,9 @@ char	*ft_pa(n_list **stack_a, n_list **stack_b)
 ** Переносит первый э-т stack_b в stack_a
 */
 
-char	*ft_pb(n_list **stack_a, n_list **stack_b)
+char	*ft_pb(t_n_list **stack_a, t_n_list **stack_b)
 {
-	n_list	*temp_1;
+	t_n_list	*temp_1;
 
 	if (!(*stack_a))
 		return (NULL);
@@ -76,10 +76,10 @@ char	*ft_pb(n_list **stack_a, n_list **stack_b)
 ** Ставит первый эл-т в конец списка a
 */
 
-char	*ft_ra(n_list **stack_a)
+char	*ft_ra(t_n_list **stack_a)
 {
-	n_list	*temp_1;
-	n_list	*temp_2;
+	t_n_list	*temp_1;
+	t_n_list	*temp_2;
 
 	if (ft_lstlens(stack_a) < 2)
 		return (NULL);
@@ -99,10 +99,10 @@ char	*ft_ra(n_list **stack_a)
 ** Ставит первый эл-т в конец списка б
 */
 
-char	*ft_rb(n_list **stack_b)
+char	*ft_rb(t_n_list **stack_b)
 {
-	n_list	*temp_1;
-	n_list	*temp_2;
+	t_n_list	*temp_1;
+	t_n_list	*temp_2;
 
 	if (ft_lstlens(stack_b) < 2)
 		return (NULL);
@@ -122,7 +122,7 @@ char	*ft_rb(n_list **stack_b)
 ** Ставит первый эл-т в конец списка одновременно в двух стэках
 */
 
-char	*ft_rr(n_list **stack_a, n_list **stack_b)
+char	*ft_rr(t_n_list **stack_a, t_n_list **stack_b)
 {
 	ft_ra(stack_a);
 	ft_rb(stack_b);

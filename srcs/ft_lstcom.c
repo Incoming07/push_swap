@@ -6,7 +6,7 @@
 /*   By: bglover <bglover@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/25 20:41:10 by bglover           #+#    #+#             */
-/*   Updated: 2019/10/31 21:07:16 by bglover          ###   ########.fr       */
+/*   Updated: 2019/11/11 19:27:04 by bglover          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,9 +16,9 @@
 ** Добавление листа с командой в конец списка
 */
 
-void	ft_lstcomadd(c_list **com_list_old, c_list *com_list_new)
+void		ft_lstcomadd(t_c_list **com_list_old, t_c_list *com_list_new)
 {
-	c_list *temp;
+	t_c_list *temp;
 
 	if (!(*com_list_old))
 		return ;
@@ -36,11 +36,11 @@ void	ft_lstcomadd(c_list **com_list_old, c_list *com_list_new)
 ** Создание листа с командой
 */
 
-c_list	*ft_lstcomnew(char *com)
+t_c_list	*ft_lstcomnew(char *com)
 {
-	c_list *com_lst;
+	t_c_list *com_lst;
 
-	com_lst = (c_list *)malloc(sizeof(c_list));
+	com_lst = (t_c_list *)malloc(sizeof(t_c_list));
 	com_lst->com = com;
 	com_lst->next = NULL;
 	return (com_lst);
@@ -50,10 +50,10 @@ c_list	*ft_lstcomnew(char *com)
 ** Длинна двусвязанного списка
 */
 
-int		ft_lstlens(n_list **stack_a)
+int			ft_lstlens(t_n_list **stack_a)
 {
-	n_list	*temp;
-	int		i;
+	t_n_list	*temp;
+	int			i;
 
 	i = 0;
 	if (!(*stack_a))
@@ -71,11 +71,11 @@ int		ft_lstlens(n_list **stack_a)
 ** Создание двусвязанного листа
 */
 
-n_list	*ft_lstnews(long long value)
+t_n_list	*ft_lstnews(long long value)
 {
-	n_list *n_list_1;
+	t_n_list *n_list_1;
 
-	n_list_1 = (n_list *)malloc(sizeof(n_list));
+	n_list_1 = (t_n_list *)malloc(sizeof(t_n_list));
 	if (!n_list_1)
 		return (NULL);
 	n_list_1->value = value;
@@ -91,10 +91,10 @@ n_list	*ft_lstnews(long long value)
 ** Создание двусвязаного списка
 */
 
-void	ft_lstadds(n_list **first, n_list *second)
+void		ft_lstadds(t_n_list **first, t_n_list *second)
 {
-	n_list *temp_1;
-	n_list *temp_2;
+	t_n_list *temp_1;
+	t_n_list *temp_2;
 
 	if (!first)
 		return ;

@@ -6,7 +6,7 @@
 /*   By: bglover <bglover@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/27 17:15:58 by bglover           #+#    #+#             */
-/*   Updated: 2019/11/10 23:10:47 by bglover          ###   ########.fr       */
+/*   Updated: 2019/11/11 18:36:22 by bglover          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,8 @@
 ** Если элемент выше цента, то делаем rra
 */
 
-void	ft_part_1_1(n_list **stack_a, n_list **stack_b, c_list **com_stack)
+void	ft_part_1_1(t_n_list **stack_a, t_n_list **stack_b,
+		t_c_list **com_stack)
 {
 	while (ft_calc_max(stack_a) != (*stack_a)->order)
 		if (!*com_stack)
@@ -33,7 +34,8 @@ void	ft_part_1_1(n_list **stack_a, n_list **stack_b, c_list **com_stack)
 ** Ищем два максимальных элемента и отпарвляем в стэк б
 */
 
-void	ft_part_1(n_list **stack_a, n_list **stack_b, c_list **com_stack)
+void	ft_part_1(t_n_list **stack_a, t_n_list **stack_b,
+		t_c_list **com_stack)
 {
 	while (ft_lstlens(stack_a) > 3)
 	{
@@ -58,10 +60,10 @@ void	ft_part_1(n_list **stack_a, n_list **stack_b, c_list **com_stack)
 ** Если числа не стоят по порядку, переставляем их
 */
 
-void	ft_part_2(n_list **stack_a, c_list **com_stack)
+void	ft_part_2(t_n_list **stack_a, t_c_list **com_stack)
 {
-	n_list	*t2;
-	n_list	*t3;
+	t_n_list	*t2;
+	t_n_list	*t3;
 
 	if (!*com_stack)
 		*com_stack = ft_lstcomnew(NULL);
@@ -89,9 +91,9 @@ void	ft_part_2(n_list **stack_a, c_list **com_stack)
 ** Для двух чисел
 */
 
-void	ft_for_two(n_list **stack_a, c_list **com_stack)
+void	ft_for_two(t_n_list **stack_a, t_c_list **com_stack)
 {
-	n_list *t1;
+	t_n_list *t1;
 
 	t1 = (*stack_a)->next;
 	if ((*stack_a)->order > t1->order)
@@ -102,10 +104,11 @@ void	ft_for_two(n_list **stack_a, c_list **com_stack)
 ** Для 5 чисел и меньше
 */
 
-void	ft_for_five(n_list **stack_a, n_list **stack_b, c_list **com_stack)
+void	ft_for_five(t_n_list **stack_a, t_n_list **stack_b,
+		t_c_list **com_stack)
 {
-	n_list	*t2;
-	n_list	*t3;
+	t_n_list	*t2;
+	t_n_list	*t3;
 
 	if (ft_lstlens(stack_a) == 2)
 		return (ft_for_two(stack_a, com_stack));
@@ -124,7 +127,7 @@ void	ft_for_five(n_list **stack_a, n_list **stack_b, c_list **com_stack)
 		ft_lstcomadd(com_stack, ft_lstcomnew(ft_ra(stack_a)));
 		ft_lstcomadd(com_stack, ft_lstcomnew(ft_ra(stack_a)));
 	}
-	else
+	else if (*stack_b)
 	{
 		ft_lstcomadd(com_stack, ft_lstcomnew(ft_pa(stack_a, stack_b)));
 		ft_lstcomadd(com_stack, ft_lstcomnew(ft_ra(stack_a)));

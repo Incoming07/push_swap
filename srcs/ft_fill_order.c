@@ -6,7 +6,7 @@
 /*   By: bglover <bglover@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/25 20:45:11 by bglover           #+#    #+#             */
-/*   Updated: 2019/10/25 20:57:07 by bglover          ###   ########.fr       */
+/*   Updated: 2019/11/11 19:27:32 by bglover          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,11 +16,11 @@
 ** Предварительная сортировка и присвоение порядковых номеров элементам
 */
 
-int		ft_fill_order(n_list **stack_a)
+int		ft_fill_order(t_n_list **stack_a)
 {
-	n_list	*temp_1;
-	n_list	*tmp_2;
-	int		i;
+	t_n_list	*temp_1;
+	t_n_list	*tmp_2;
+	int			i;
 
 	i = 1;
 	while (i <= ft_lstlens(stack_a))

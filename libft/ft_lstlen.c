@@ -6,7 +6,7 @@
 /*   By: bglover <bglover@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/03 21:31:11 by bglover           #+#    #+#             */
-/*   Updated: 2019/10/03 21:32:38 by bglover          ###   ########.fr       */
+/*   Updated: 2019/11/11 19:28:26 by bglover          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,10 +16,10 @@
 ** Подсчет длинны списка
 */
 
-int ft_lstlen(t_list **lst)
+int	ft_lstlen(t_list **lst)
 {
-	t_list *temp;
-	int len;
+	t_list	*temp;
+	int		len;
 
 	len = 0;
 	temp = *lst;

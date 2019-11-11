@@ -6,7 +6,7 @@
 /*   By: bglover <bglover@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/01 18:28:49 by bglover           #+#    #+#             */
-/*   Updated: 2019/11/08 22:33:54 by bglover          ###   ########.fr       */
+/*   Updated: 2019/11/11 19:26:27 by bglover          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,10 +16,10 @@
 ** Меняет местами первые два эл-та stack_a
 */
 
-char	*ft_sa(n_list **stack_a)
+char	*ft_sa(t_n_list **stack_a)
 {
-	n_list	*temp_1;
-	n_list	*temp_2;
+	t_n_list	*temp_1;
+	t_n_list	*temp_2;
 
 	if (ft_lstlens(stack_a) < 2)
 		return (NULL);
@@ -39,10 +39,10 @@ char	*ft_sa(n_list **stack_a)
 ** Меняет местами первые два эл-та stack_b
 */
 
-char	*ft_sb(n_list **stack_b)
+char	*ft_sb(t_n_list **stack_b)
 {
-	n_list	*temp_1;
-	n_list	*temp_2;
+	t_n_list	*temp_1;
+	t_n_list	*temp_2;
 
 	if (ft_lstlens(stack_b) < 2)
 		return (NULL);
@@ -63,12 +63,12 @@ char	*ft_sb(n_list **stack_b)
 ** Ставит последний эл-т в начало списка
 */
 
-char	*ft_rra(n_list **stack_a)
+char	*ft_rra(t_n_list **stack_a)
 {
-	n_list	*temp_1;
-	n_list	*temp_2;
-	int		i;
-	int		j;
+	t_n_list	*temp_1;
+	t_n_list	*temp_2;
+	int			i;
+	int			j;
 
 	if (ft_lstlens(stack_a) < 2)
 		return (NULL);
@@ -94,12 +94,12 @@ char	*ft_rra(n_list **stack_a)
 ** Ставит последний эл-т в начало списка
 */
 
-char	*ft_rrb(n_list **stack_b)
+char	*ft_rrb(t_n_list **stack_b)
 {
-	n_list	*temp_1;
-	n_list	*temp_2;
-	int		i;
-	int		j;
+	t_n_list	*temp_1;
+	t_n_list	*temp_2;
+	int			i;
+	int			j;
 
 	if (ft_lstlens(stack_b) < 2)
 		return (NULL);
@@ -125,7 +125,7 @@ char	*ft_rrb(n_list **stack_b)
 ** Ставит последний эл-т в начало списка одновременно в двух стеках
 */
 
-char	*ft_rrr(n_list **stack_a, n_list **stack_b)
+char	*ft_rrr(t_n_list **stack_a, t_n_list **stack_b)
 {
 	ft_rra(stack_a);
 	ft_rrb(stack_b);

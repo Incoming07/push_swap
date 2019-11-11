@@ -6,7 +6,7 @@
 /*   By: bglover <bglover@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/25 20:43:51 by bglover           #+#    #+#             */
-/*   Updated: 2019/11/08 21:56:32 by bglover          ###   ########.fr       */
+/*   Updated: 2019/11/11 19:27:24 by bglover          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,10 +16,10 @@
 ** Проверка правильности сортировки
 */
 
-int		ft_check_sort(n_list **stack_a, ps **new_ps)
+int		ft_check_sort(t_n_list **stack_a, t_ps **new_ps)
 {
-	int		i;
-	n_list	*stack_temp;
+	int			i;
+	t_n_list	*stack_temp;
 
 	i = 0;
 	if (!(*stack_a))

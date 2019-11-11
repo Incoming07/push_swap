@@ -6,7 +6,7 @@
 /*   By: bglover <bglover@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/29 23:38:14 by bglover           #+#    #+#             */
-/*   Updated: 2019/11/09 22:16:26 by bglover          ###   ########.fr       */
+/*   Updated: 2019/11/11 18:38:10 by bglover          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,9 +33,9 @@ int		ft_check_words(char *word)
 ** Проверка на одинаковые вхождения
 */
 
-int		ft_check_dup(n_list **stack_a, int nmb)
+int		ft_check_dup(t_n_list **stack_a, int nmb)
 {
-	n_list *tmp;
+	t_n_list *tmp;
 
 	tmp = (*stack_a);
 	while ((*stack_a))
@@ -55,7 +55,7 @@ int		ft_check_dup(n_list **stack_a, int nmb)
 ** Парсер значений
 */
 
-int		not_string(char **argv, int argc, n_list **stack_a)
+int		not_string(char **argv, int argc, t_n_list **stack_a)
 {
 	int i;
 
@@ -84,7 +84,7 @@ int		not_string(char **argv, int argc, n_list **stack_a)
 ** Проверки строки
 */
 
-int		ft_check_str(n_list **stack_a, char **temp, int i, char **argv)
+int		ft_check_str(t_n_list **stack_a, char **temp, int i, char **argv)
 {
 	if (argv[1][ft_strlen(argv[1]) - 1] == ' ')
 		return (0);
@@ -117,7 +117,7 @@ int		ft_check_str(n_list **stack_a, char **temp, int i, char **argv)
 ** Парсер строки
 */
 
-int		ft_parse(char **argv, int argc, n_list **stack_a)
+int		ft_parse(char **argv, int argc, t_n_list **stack_a)
 {
 	int		i;
 	char	**temp;
@@ -127,7 +127,7 @@ int		ft_parse(char **argv, int argc, n_list **stack_a)
 	if (argc == 2)
 	{
 		i = ft_check_str(stack_a, temp, i, argv) - 1;
-		if (i < 1 && ft_lstlens(stack_a) < 2)
+		if (i < 1)
 			return (0);
 	}
 	else

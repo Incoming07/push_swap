@@ -6,7 +6,7 @@
 /*   By: bglover <bglover@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/25 20:42:51 by bglover           #+#    #+#             */
-/*   Updated: 2019/10/25 20:56:54 by bglover          ###   ########.fr       */
+/*   Updated: 2019/11/11 19:27:17 by bglover          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,10 +16,10 @@
 ** Нахождение максимального элемента стэка
 */
 
-int		ft_calc_max(n_list **stack)
+int		ft_calc_max(t_n_list **stack)
 {
-	n_list	*temp;
-	int		i;
+	t_n_list	*temp;
+	int			i;
 
 	i = 0;
 	temp = (*stack);

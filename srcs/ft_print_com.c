@@ -6,7 +6,7 @@
 /*   By: bglover <bglover@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/25 20:44:27 by bglover           #+#    #+#             */
-/*   Updated: 2019/11/10 23:12:24 by bglover          ###   ########.fr       */
+/*   Updated: 2019/11/11 18:38:26 by bglover          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,10 +16,10 @@
 ** Поиск возможных замен и печать результатов
 */
 
-void	ft_print_com(c_list **com_stack)
+void	ft_print_com(t_c_list **com_stack)
 {
-	c_list	*com_stack_temp;
-	c_list	*com_stack_first;
+	t_c_list	*com_stack_temp;
+	t_c_list	*com_stack_first;
 
 	com_stack_first = (*com_stack);
 	while ((*com_stack)->next)

@@ -6,7 +6,7 @@
 /*   By: bglover <bglover@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/27 19:09:02 by bglover           #+#    #+#             */
-/*   Updated: 2019/11/10 22:18:07 by bglover          ###   ########.fr       */
+/*   Updated: 2019/11/11 18:34:46 by bglover          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@
 ** Продолжаем искать совпадение команды
 */
 
-void	gnl_end(n_list **stack_a, n_list **stack_b, char **line)
+void	gnl_end(t_n_list **stack_a, t_n_list **stack_b, char **line)
 {
 	if (!ft_strcmp(*line, "rr"))
 		ft_rr(stack_a, stack_b);
@@ -34,7 +34,7 @@ void	gnl_end(n_list **stack_a, n_list **stack_b, char **line)
 ** Раскидываем действия относительно поданной команды
 */
 
-void	gnl_begin(n_list **stack_a, n_list **stack_b)
+void	gnl_begin(t_n_list **stack_a, t_n_list **stack_b)
 {
 	char	*line;
 
@@ -65,10 +65,10 @@ void	gnl_begin(n_list **stack_a, n_list **stack_b)
 
 int		main(int argc, char **argv)
 {
-	n_list	*stack_a;
-	n_list	*stack_b;
-	c_list	*com_stack;
-	ps		*new_ps;
+	t_n_list	*stack_a;
+	t_n_list	*stack_b;
+	t_c_list	*com_stack;
+	t_ps		*new_ps;
 
 	stack_a = NULL;
 	stack_b = NULL;

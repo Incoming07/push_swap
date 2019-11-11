@@ -6,7 +6,7 @@
 /*   By: bglover <bglover@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/01 16:37:27 by bglover           #+#    #+#             */
-/*   Updated: 2019/11/03 16:36:43 by bglover          ###   ########.fr       */
+/*   Updated: 2019/11/11 18:37:06 by bglover          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,9 +16,9 @@
 ** Чистим список команд
 */
 
-void	ft_free_com(c_list **com_stack)
+void	ft_free_com(t_c_list **com_stack)
 {
-	c_list	*temp_1;
+	t_c_list	*temp_1;
 
 	while ((*com_stack)->next)
 	{
@@ -30,25 +30,32 @@ void	ft_free_com(c_list **com_stack)
 }
 
 /*
+** чистка стэка б
+*/
+
+void	ft_free_stack_b(t_n_list **stack_b)
+{
+	t_n_list	*temp_2;
+
+	while ((*stack_b)->next)
+	{
+		temp_2 = *stack_b;
+		*stack_b = (*stack_b)->next;
+		free(temp_2);
+	}
+	free(*stack_b);
+}
+
+/*
 ** Финальная очистка
 */
 
-void	ft_free_all(n_list **stack_a, n_list **stack_b, ps **new_ps,
-		c_list **com_stack)
+int		ft_free_all(t_n_list **stack_a, t_n_list **stack_b, t_ps **new_ps,
+		t_c_list **com_stack)
 {
-	n_list	*temp_2;
-
 	free(*new_ps);
 	if (*stack_b)
-	{
-		while ((*stack_b)->next)
-		{
-			temp_2 = *stack_b;
-			*stack_b = (*stack_b)->next;
-			free(temp_2);
-		}
-		free(*stack_b);
-	}
+		ft_free_stack_b(stack_b);
 	if (*stack_a)
 	{
 		while ((*stack_a)->next)
@@ -61,6 +68,7 @@ void	ft_free_all(n_list **stack_a, n_list **stack_b, ps **new_ps,
 	}
 	if (*com_stack)
 		ft_free_com(com_stack);
+	return (0);
 }
 
 /*
