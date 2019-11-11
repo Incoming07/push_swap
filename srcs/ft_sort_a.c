@@ -6,19 +6,40 @@
 /*   By: bglover <bglover@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/25 20:17:43 by bglover           #+#    #+#             */
-/*   Updated: 2019/11/10 23:09:28 by bglover          ###   ########.fr       */
+/*   Updated: 2019/11/11 18:34:11 by bglover          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/push_swap.h"
 
 /*
+** Не прокручиваем элемент второй половины, если он больше
+** mid и следующий элемент первый
+*/
+
+int		ft_maby_last(t_n_list **stack_a, t_ps **new_ps, t_c_list **com_stack,
+		int i)
+{
+	(*stack_a)->flag = (*new_ps)->flag;
+	(*stack_a) = (*stack_a)->next;
+	if ((*stack_a)->order == 1)
+	{
+		(*stack_a) = (*stack_a)->previous;
+		return (i);
+	}
+	(*stack_a) = (*stack_a)->previous;
+	ft_lstcomadd(com_stack, ft_lstcomnew(ft_ra(stack_a)));
+	i++;
+	return (i);
+}
+
+/*
 ** Основная сортировка стэка а!
 ** Если сортируем вторую половину
 */
 
-int		second_half(n_list **stack_a, n_list **stack_b, ps **new_ps,
-		c_list **com_stack)
+int		second_half(t_n_list **stack_a, t_n_list **stack_b, t_ps **new_ps,
+		t_c_list **com_stack)
 {
 	int i;
 	int flag;
@@ -39,11 +60,7 @@ int		second_half(n_list **stack_a, n_list **stack_b, ps **new_ps,
 			ft_lstcomadd(com_stack, ft_lstcomnew(ft_pb(stack_a, stack_b)));
 		}
 		else if ((*stack_a)->order >= mid)
-		{
-			(*stack_a)->flag = (*new_ps)->flag;
-			ft_lstcomadd(com_stack, ft_lstcomnew(ft_ra(stack_a)));
-			i++;
-		}
+			i = ft_maby_last(stack_a, new_ps, com_stack, i);
 	return (i);
 }
 
@@ -51,8 +68,8 @@ int		second_half(n_list **stack_a, n_list **stack_b, ps **new_ps,
 ** Прокрутка обратно после половины (перекрыли стек)
 */
 
-void	wheel_of_fortune(n_list **stack_a, n_list **stack_b, ps **new_ps,
-		c_list **com_stack)
+void	wheel_of_fortune(t_n_list **stack_a, t_n_list **stack_b, t_ps **new_ps,
+		t_c_list **com_stack)
 {
 	while ((*new_ps)->i--)
 		if ((*stack_b) && (*stack_b)->order != (*new_ps)->next)
@@ -75,8 +92,8 @@ void	wheel_of_fortune(n_list **stack_a, n_list **stack_b, ps **new_ps,
 ** (пока не перекрываем стэк снизу)
 */
 
-void	ft_start_sort_a(n_list **stack_a, n_list **stack_b, ps **new_ps,
-		c_list **com_stack)
+void	ft_start_sort_a(t_n_list **stack_a, t_n_list **stack_b, t_ps **new_ps,
+		t_c_list **com_stack)
 {
 	int flag;
 	int mid;
