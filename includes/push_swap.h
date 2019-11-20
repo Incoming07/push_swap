@@ -6,13 +6,26 @@
 /*   By: bglover <bglover@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/25 20:06:39 by bglover           #+#    #+#             */
-/*   Updated: 2019/11/11 18:32:17 by bglover          ###   ########.fr       */
+/*   Updated: 2019/11/20 21:08:22 by bglover          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef PUSH_SWAP_H
 # define PUSH_SWAP_H
 # include "../libft/libft.h"
+# include "/Users/bglover/.brew/Cellar/sdl2/2.0.10/include/SDL2/SDL.h"
+
+typedef	struct			s_win
+{
+	SDL_Window 			*window_a;
+	SDL_Window 			*window_b;
+	SDL_Renderer 		*ren_a;
+	SDL_Renderer 		*ren_b;
+	SDL_Surface 		*surf;
+	SDL_Rect 			destR;
+	SDL_Event			e;
+	int					max;
+}						t_win;
 
 typedef	struct
 {
@@ -20,6 +33,9 @@ typedef	struct
 	int					max;
 	int					flag;
 	int					i;
+	int					a_b;
+	int					v;
+	t_win				*new_win;
 }						t_ps;
 
 typedef struct			s_com_list
@@ -35,6 +51,8 @@ typedef	struct			s_num_list
 	int					order;
 	int					sort;
 	int					flag;
+	SDL_Texture 		*txt_a;
+	SDL_Texture 		*txt_b;
 	struct s_num_list	*next;
 }						t_n_list;
 
@@ -59,7 +77,7 @@ void					ft_for_three(t_n_list **stack_b,
 int						ft_fill_order(t_n_list **stack_a);
 int						ft_calc_max(t_n_list **stack);
 int						ft_check_sort(t_n_list **stack_a, t_ps **new_ps);
-int						ft_parse(char **argv, int argc, t_n_list **stack_a);
+int						ft_parse(char **argv, int argc, t_n_list **stack_a, t_ps **new_ps);
 int						ft_free_temp(char **temp, int i);
 void					ft_start_sort_a(t_n_list **stack_a,
 						t_n_list **stack_b, t_ps **new_ps,
@@ -72,6 +90,9 @@ int						ft_free_all(t_n_list **stack_a, t_n_list **stack_b,
 						t_ps **new_ps, t_c_list **com_stack);
 void					ft_for_five(t_n_list **stack_a, t_n_list **stack_b,
 						t_c_list **com_stack);
-t_ps					*ft_init_ps(t_n_list **stack_a);
+void					ft_init_ps(t_n_list **stack_a, t_ps **new_ps);
+void					ft_vis(t_n_list **stack_a, t_n_list **stack_b, t_ps **new_ps);
+void					ft_push_next(t_n_list **stack_a, t_n_list **stack_b,
+						t_ps **new_ps, t_c_list **com_stack);
 
 #endif

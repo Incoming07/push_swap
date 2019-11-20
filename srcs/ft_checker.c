@@ -6,7 +6,7 @@
 /*   By: bglover <bglover@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/27 19:09:02 by bglover           #+#    #+#             */
-/*   Updated: 2019/11/11 18:34:46 by bglover          ###   ########.fr       */
+/*   Updated: 2019/11/20 21:44:38 by bglover          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -74,12 +74,13 @@ int		main(int argc, char **argv)
 	stack_b = NULL;
 	if (argc == 1)
 		return (0);
-	if (!ft_parse(argv, argc, &stack_a))
+	new_ps = (t_ps *)malloc(sizeof(t_ps));
+	if (!ft_parse(argv, argc, &stack_a, &new_ps))
 	{
 		ft_free_all(&stack_a, &stack_b, &new_ps, &com_stack);
 		return (write(1, "Error\n", 6));
 	}
-	new_ps = ft_init_ps(&stack_a);
+	ft_init_ps(&stack_a, &new_ps);
 	gnl_begin(&stack_a, &stack_b);
 	if (!ft_check_sort(&stack_a, &new_ps))
 		write(1, "OK\n", 3);

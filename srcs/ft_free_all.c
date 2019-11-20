@@ -6,7 +6,7 @@
 /*   By: bglover <bglover@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/01 16:37:27 by bglover           #+#    #+#             */
-/*   Updated: 2019/11/11 18:37:06 by bglover          ###   ########.fr       */
+/*   Updated: 2019/11/20 21:42:16 by bglover          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,7 +53,8 @@ void	ft_free_stack_b(t_n_list **stack_b)
 int		ft_free_all(t_n_list **stack_a, t_n_list **stack_b, t_ps **new_ps,
 		t_c_list **com_stack)
 {
-	free(*new_ps);
+	if (*new_ps)
+		free(*new_ps);
 	if (*stack_b)
 		ft_free_stack_b(stack_b);
 	if (*stack_a)

@@ -6,7 +6,7 @@
 /*   By: bglover <bglover@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/18 15:16:12 by bglover           #+#    #+#             */
-/*   Updated: 2019/11/11 18:38:46 by bglover          ###   ########.fr       */
+/*   Updated: 2019/11/20 21:40:02 by bglover          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,6 +24,7 @@ int		ft_first_sort_a(t_n_list **stack_a, t_n_list **stack_b, t_ps **new_ps,
 	int i;
 	int mid;
 
+	ft_vis(stack_a, stack_b, new_ps);
 	i = 0;
 	mid = ((*new_ps)->max - (*new_ps)->next) / 2 + (*new_ps)->next;
 	(*new_ps)->flag++;
@@ -34,6 +35,7 @@ int		ft_first_sort_a(t_n_list **stack_a, t_n_list **stack_b, t_ps **new_ps,
 				*com_stack = ft_lstcomnew(ft_pb(stack_a, stack_b));
 			else
 				ft_lstcomadd(com_stack, ft_lstcomnew(ft_pb(stack_a, stack_b)));
+			ft_vis(stack_a, stack_b, new_ps);
 		}
 		else if ((*new_ps)->next == 1)
 		{
@@ -41,6 +43,7 @@ int		ft_first_sort_a(t_n_list **stack_a, t_n_list **stack_b, t_ps **new_ps,
 				*com_stack = ft_lstcomnew(ft_ra(stack_a));
 			else
 				ft_lstcomadd(com_stack, ft_lstcomnew(ft_ra(stack_a)));
+			ft_vis(stack_a, stack_b, new_ps);
 		}
 	return (0);
 }
@@ -58,22 +61,19 @@ void	ft_start_sort(t_n_list **stack_a, t_n_list **stack_b, t_ps **new_ps,
 		{
 			(*stack_b)->sort = 0;
 			ft_rb(stack_b);
+			ft_vis(stack_a, stack_b, new_ps);
 		}
 		if (!*stack_b)
 			ft_start_sort_a(stack_a, stack_b, new_ps, com_stack);
 		while (*stack_b && (*stack_b)->order == (*new_ps)->next)
-		{
-			(*stack_b)->flag = (*new_ps)->flag;
-			ft_lstcomadd(com_stack, ft_lstcomnew(ft_pa(stack_a, stack_b)));
-			ft_lstcomadd(com_stack, ft_lstcomnew(ft_ra(stack_a)));
-			(*new_ps)->next++;
-		}
+			ft_push_next(stack_a, stack_b, new_ps, com_stack);
 		ft_start_sort_b(stack_a, stack_b, new_ps, com_stack);
 		while ((*stack_a)->order == (*new_ps)->next)
 		{
 			(*stack_a)->flag = (*new_ps)->flag;
 			ft_lstcomadd(com_stack, ft_lstcomnew(ft_ra(stack_a)));
 			(*new_ps)->next++;
+			ft_vis(stack_a, stack_b, new_ps);
 		}
 	}
 }
@@ -117,14 +117,16 @@ int		main(int argc, char **argv)
 
 	stack_a = NULL;
 	stack_b = NULL;
-	if (!ft_parse(argv, argc, &stack_a))
+	new_ps = (t_ps *)malloc(sizeof(t_ps));
+	new_ps->v = 0;
+	if (!ft_parse(argv, argc, &stack_a, &new_ps))
 	{
 		ft_free_all(&stack_a, &stack_b, &new_ps, &com_stack);
 		if (ft_lstlens(&stack_a) == 1)
 			return (0);
 		return (write(1, "Error\n", 6));
 	}
-	new_ps = ft_init_ps(&stack_a);
+	ft_init_ps(&stack_a, &new_ps);
 	if (!ft_check_sort(&stack_a, &new_ps))
 		return (ft_free_all(&stack_a, &stack_b, &new_ps, &com_stack));
 	if (ft_lstlens(&stack_a) <= 5)

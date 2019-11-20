@@ -6,7 +6,7 @@
 /*   By: bglover <bglover@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/25 20:41:10 by bglover           #+#    #+#             */
-/*   Updated: 2019/11/11 19:27:04 by bglover          ###   ########.fr       */
+/*   Updated: 2019/11/20 21:10:43 by bglover          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -84,6 +84,8 @@ t_n_list	*ft_lstnews(long long value)
 	n_list_1->sort = 0;
 	n_list_1->next = NULL;
 	n_list_1->previous = NULL;
+	n_list_1->txt_a = NULL;
+	n_list_1->txt_b = NULL;
 	return (n_list_1);
 }
 

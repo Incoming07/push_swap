@@ -6,7 +6,7 @@
 /*   By: bglover <bglover@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/29 23:38:14 by bglover           #+#    #+#             */
-/*   Updated: 2019/11/11 18:38:10 by bglover          ###   ########.fr       */
+/*   Updated: 2019/11/20 21:33:29 by bglover          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,13 +55,15 @@ int		ft_check_dup(t_n_list **stack_a, int nmb)
 ** Парсер значений
 */
 
-int		not_string(char **argv, int argc, t_n_list **stack_a)
+int		not_string(char **argv, int argc, t_n_list **stack_a, t_ps **new_ps)
 {
 	int i;
 
 	i = 0;
 	while (i++ < argc - 1)
 	{
+		if (!ft_strcmp("-v", argv[i]))
+			return ((*new_ps)->v = 1);
 		if (ft_strlen(argv[i]) > 12 || ft_check_words(argv[i]))
 			return (0);
 		if (ft_atoi(argv[i]) < -2147483649)
@@ -117,7 +119,7 @@ int		ft_check_str(t_n_list **stack_a, char **temp, int i, char **argv)
 ** Парсер строки
 */
 
-int		ft_parse(char **argv, int argc, t_n_list **stack_a)
+int		ft_parse(char **argv, int argc, t_n_list **stack_a, t_ps **new_ps)
 {
 	int		i;
 	char	**temp;
@@ -130,7 +132,9 @@ int		ft_parse(char **argv, int argc, t_n_list **stack_a)
 		if (i < 1)
 			return (0);
 	}
+	else if (argc == 1)
+		return (0);
 	else
-		return (not_string(argv, argc, stack_a));
+		return (not_string(argv, argc, stack_a, new_ps));
 	return (1);
 }

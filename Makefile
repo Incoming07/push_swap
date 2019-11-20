@@ -6,7 +6,7 @@
 #    By: bglover <bglover@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2019/04/20 16:00:15 by bglover           #+#    #+#              #
-#    Updated: 2019/11/11 17:19:38 by bglover          ###   ########.fr        #
+#    Updated: 2019/11/19 22:41:17 by bglover          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -15,11 +15,12 @@ PUSH_SWAP = push_swap
 CC = gcc -g#-Wall -Wextra -Werror
 SRC_DIR = srcs/
 LIBFT_DIR = libft/
+LIB  = /Users/bglover/.brew/Cellar/sdl2/2.0.10/lib
 OBJ_DIR = obj/
 #убрать -g из компиляции
 PS_SRCS = ft_sort_a.c ft_sort_b.c ft_lstcom.c ft_pa_pb_ra_rb_rr.c ft_sa_sb_rra_rrb_rrr.c ft_init_ps.c \
 ft_check_sort.c ft_calc_max.c ft_fill_order.c ft_for_three.c ft_print_com.c ft_push_swap.c ft_for_five.c \
-ft_parse.c ft_free_all.c
+ft_parse.c ft_free_all.c ft_visual.c ft_first_sort.c
 CHECKER_SRCS = ft_checker.c ft_sa_sb_rra_rrb_rrr.c ft_init_ps.c ft_lstcom.c ft_check_sort.c ft_fill_order.c \
 ft_pa_pb_ra_rb_rr.c ft_parse.c ft_free_all.c
 
@@ -38,7 +39,7 @@ $(CHECKER): $(addprefix $(OBJ_DIR), $(CHECKER_OBJ))
 	@echo "🖕 "
 
 $(PUSH_SWAP): $(addprefix $(OBJ_DIR), $(PS_OBJ))
-	@$(CC) $(addprefix $(OBJ_DIR), $(PS_OBJ)) $(LIBFT_DIR)libft.a -I libft/ -I include/ -o $(PUSH_SWAP)
+	@$(CC) $(addprefix $(OBJ_DIR), $(PS_OBJ)) $(LIBFT_DIR)libft.a -I libft/ -L $(LIB) -l SDL2-2.0.0 -I include/ -o $(PUSH_SWAP)
 	@echo "🖕 "
 
 clean:
