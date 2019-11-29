@@ -40,7 +40,12 @@ The first argument should be at the top of the stack
  
   Checker will get as an argument the stack "a" formatted as a list of integers. 
 The first argument should be at the top of the stack (be careful about the order). If 
-no argument is given checker stops and displays nothing.
+no argument is given checker stops and displays nothing. Checker will then wait and 
+read instructions on the standard input, each instruction will be followed by ’\n’. 
+Once all the instructions have been read, checker willexecute them on the stack received 
+as an argument. If after executing those instructions, stack a is actually sorted and b 
+is empty, then checker must display "OK" followed by a ’\n’ on the standard output. In every
+other case, checker must display "KO" followed by a ’\n’ on the standard output.
 
   To run visualization add flag -v after numbers in push_swap, best visualization is for 100
 numbers, smaller will be too fast, window will be closed automatically after end of sorting
