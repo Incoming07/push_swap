@@ -50,3 +50,5 @@ other case, checker must display "KO" followed by a ’\n’ on the standard out
   To run visualization add flag -v after numbers in push_swap, best visualization is for 100
 numbers, smaller will be too fast, window will be closed automatically after end of sorting
 algoritm.
+
+  Progect was done on double linked lists, was realized fast half sort with central element
